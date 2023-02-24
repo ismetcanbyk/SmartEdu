@@ -1,0 +1,32 @@
+{
+  "name": "smartedu",
+  "version": "1.0.0",
+  "description": "Smart education portal.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismetcanbyk/SmartEdu.git"
+  },
+  "keywords": [
+    "education",
+    "portal",
+    "smart"
+  ],
+  "author": "ismet can bıyık",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ismetcanbyk/SmartEdu/issues"
+  },
+  "homepage": "https://github.com/ismetcanbyk/SmartEdu#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
