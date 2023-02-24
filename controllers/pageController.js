@@ -13,4 +13,16 @@ const getIndexPage = (req, res) => {
 };
 
 
-export { getAboutPage, getIndexPage };
+const getContactPage = (req, res) => {
+    res.status(200).render('contact', {
+        page_name: "contact"
+    });
+};
+
+const getDashboardPage = (req, res) => {
+    res.status(200).render('dashboard', {
+        page_name: "dashboard"
+    });
+};
+
+export { getAboutPage, getIndexPage, getContactPage, getDashboardPage };
