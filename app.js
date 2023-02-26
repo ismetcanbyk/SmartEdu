@@ -34,6 +34,7 @@ app.use('/', pageRouter);
 app.use('/courses', courseRouter);
 
 
+
 app.listen(port, () => {
     console.log(`App started on port ${port}.`);
 });

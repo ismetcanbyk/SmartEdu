@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 mongoose.set('strictQuery', false);
 
@@ -18,7 +19,20 @@ const CourseSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    slug: {
+        type: String,
+        unique: true
     }
+});
+
+
+CourseSchema.pre('validate', function (next) {
+    this.slug = slugify(this.name, {
+        lower: true,
+        strict: true
+    });
+    next();
 });
 
 const Course = mongoose.model('Course', CourseSchema);

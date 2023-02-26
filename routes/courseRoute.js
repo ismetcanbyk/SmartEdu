@@ -8,6 +8,9 @@ router.route('/')
     .get(courseController.getAllCourses)
     .post(courseController.createCourse);
 
+router.route('/:slug')
+    .get(courseController.getCourse);
+
 
 export default router;
 
