@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import pageRouter from './routes/pageRoute.js';
 import courseRouter from './routes/courseRoute.js';
+import categoryRouter from './routes/categoryRoute.js'
 
 
 
@@ -32,6 +33,7 @@ app.use(express.json());
 //Routes
 app.use('/', pageRouter);
 app.use('/courses', courseRouter);
+app.use('/categories', categoryRouter);
 
 
 
