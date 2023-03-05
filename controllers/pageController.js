@@ -25,4 +25,10 @@ const getDashboardPage = (req, res) => {
     });
 };
 
-export { getAboutPage, getIndexPage, getContactPage, getDashboardPage };
+const getRegisterPage = (req, res) => {
+    res.status(200).render('register', {
+        page_name: "register"
+    });
+};
+
+export { getAboutPage, getIndexPage, getContactPage, getDashboardPage, getRegisterPage };
