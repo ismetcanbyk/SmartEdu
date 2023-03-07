@@ -1,5 +1,5 @@
-import User from "../models/User.js";
 import bcrypt from 'bcrypt';
+import User from "../models/User.js";
 
 const createUser = async (req, res) => {
     try {
@@ -23,7 +23,8 @@ const loginUser = async (req, res) => {
         let user = await User.findOne({ email });
         let same = await bcrypt.compare(password, user.password);
         if (same) {
-            res.status(200).send('You are logged in');
+            req.session.userID = user._id;
+            res.status(200).redirect('/');
         } else {
             res.send('Geçersiz');
         }
@@ -32,10 +33,15 @@ const loginUser = async (req, res) => {
         res.status(400).json({
             status: "fail",
             error
-        })
-    }
+        });
+    };
+};
 
-}
+const logoutUser = (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
+};
 
 
-export { createUser, loginUser };
+export { createUser, loginUser, logoutUser };
