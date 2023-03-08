@@ -20,11 +20,6 @@ const getContactPage = (req, res) => {
     });
 };
 
-const getDashboardPage = (req, res) => {
-    res.status(200).render('dashboard', {
-        page_name: "dashboard"
-    });
-};
 
 const getRegisterPage = (req, res) => {
     res.status(200).render('register', {
@@ -39,4 +34,4 @@ const getLoginPage = (req, res) => {
     });
 };
 
-export { getAboutPage, getIndexPage, getContactPage, getDashboardPage, getRegisterPage, getLoginPage };
+export { getAboutPage, getIndexPage, getContactPage, getRegisterPage, getLoginPage };
