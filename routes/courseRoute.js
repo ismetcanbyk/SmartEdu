@@ -12,6 +12,8 @@ router.route('/')
 router.route('/:slug')
     .get(courseController.getCourse);
 
+router.route('/enroll')
+    .post(courseController.enrollCourse);
 
 export default router;
 
