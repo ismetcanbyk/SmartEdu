@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import * as dotenv from 'dotenv';
 import pageRouter from './routes/pageRoute.js';
 import courseRouter from './routes/courseRoute.js';
 import categoryRouter from './routes/categoryRoute.js'
@@ -9,9 +10,9 @@ import userRouter from './routes/userRoute.js'
 
 
 
+dotenv.config();
 
 const app = express();
-
 const port = 3000;
 
 //Connect DB
@@ -57,4 +58,5 @@ app.use('/users', userRouter);
 
 app.listen(port, () => {
     console.log(`App started on port ${port}.`);
+
 });

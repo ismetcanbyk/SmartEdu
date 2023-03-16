@@ -7,9 +7,12 @@ const router = express.Router();
 
 router.route('/').get(pagerController.getIndexPage);
 router.route('/about').get(pagerController.getAboutPage);
-router.route('/contact').get(pagerController.getContactPage);
 router.route('/register').get(redirectMidlleware, pagerController.getRegisterPage);
 router.route('/login').get(redirectMidlleware, pagerController.getLoginPage);
+
+router.route('/contact')
+    .get(pagerController.getContactPage)
+    .post(pagerController.sendEmail);
 
 export default router;
 
