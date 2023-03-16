@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import flash from 'connect-flash';
 import * as dotenv from 'dotenv';
 import pageRouter from './routes/pageRoute.js';
 import courseRouter from './routes/courseRoute.js';
@@ -42,7 +43,11 @@ app.use(session({
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: 'mongodb://localhost/smartedu-db' })
 }));
-
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.flashMessages = req.flash();
+    next();
+});
 
 
 //Routes
