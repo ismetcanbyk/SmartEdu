@@ -83,9 +83,8 @@ const sendEmail = async (req, res) => {
     } catch (error) {
         req.flash("error", `Something happened!`);
     }
-
-
 };
+
 
 
 export { getAboutPage, getIndexPage, getContactPage, getRegisterPage, getLoginPage, sendEmail };

@@ -125,9 +125,44 @@ const deleteCourse = async (req, res) => {
         res.status(400).json({
             error
         });
-    }
-
-
+    };
 };
 
-export { createCourse, getAllCourses, getCourse, enrollCourse, releaseCourse, deleteCourse };
+const getUpdatePage = async (req, res) => {
+    try {
+        const course = await Course.findOne({ slug: req.params.slug });
+        const categories = await Category.find();
+
+        res.status(200).render('courseUpdatePage', {
+            page_name: "courses",
+            course,
+            categories
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            error
+        });
+    };
+};
+
+const updateCourse = async (req, res) => {
+    try {
+        const course = await Course.findOne({ slug: req.params.slug });
+
+        course.name = req.body.name;
+        course.description = req.body.description;
+        course.category = req.body.category;
+        course.save();
+
+        res.status(200).redirect('/users/dashboard');
+
+    } catch (error) {
+        res.status(400).json({
+            error
+        });
+    };
+};
+
+
+export { createCourse, getAllCourses, getCourse, enrollCourse, releaseCourse, deleteCourse, getUpdatePage, updateCourse };

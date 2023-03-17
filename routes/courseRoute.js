@@ -19,6 +19,10 @@ router.route('/enroll')
 router.route('/release')
     .post(courseController.releaseCourse);
 
+router.route('/update/:slug')
+    .get(courseController.getUpdatePage)
+    .put(courseController.updateCourse);
+
 export default router;
 
 
