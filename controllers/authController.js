@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import { validationResult } from 'express-validator';
 import User from "../models/User.js";
 import Category from '../models/Category.js';
 import Course from '../models/Course.js';
@@ -10,12 +11,18 @@ const createUser = async (req, res) => {
         res.status(201).redirect('/login');
 
     } catch (error) {
-        res.status(400).json({
-            status: "fail",
-            error
-        });
+        const errors = validationResult(req);
+        console.log(errors.array()[0].msg);
+
+        for (let i = 0; i < errors.array().length; i++) {
+
+            req.flash("error", ` ${errors.array()[i].msg}`);
+        }
+
+        res.status(400).redirect('/register');
     }
 };
+
 
 const loginUser = async (req, res) => {
     try {
@@ -26,14 +33,13 @@ const loginUser = async (req, res) => {
             req.session.userID = user._id;
             res.status(200).redirect('/');
         } else {
-            res.send('Geçersiz');
+            req.flash("error", "Your password is not correct !");
+            res.status(400).redirect('/login');
         }
 
     } catch (error) {
-        res.status(400).json({
-            status: "fail",
-            error
-        });
+        req.flash("error", "Your email is not correct !");
+        res.status(400).redirect('/login');
     };
 };
 
@@ -42,6 +48,7 @@ const logoutUser = (req, res) => {
         res.redirect('/');
     });
 };
+
 
 const getDashboardPage = async (req, res) => {
     const user = await User.findOne({ _id: req.session.userID }).populate('courses');
