@@ -4,6 +4,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import flash from 'connect-flash';
 import * as dotenv from 'dotenv';
+import methodOverride from 'method-override';
 import pageRouter from './routes/pageRoute.js';
 import courseRouter from './routes/courseRoute.js';
 import categoryRouter from './routes/categoryRoute.js'
@@ -48,6 +49,11 @@ app.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
     next();
 });
+app.use(
+    methodOverride('_method', {
+        methods: ['POST', 'GET'],
+    })
+);
 
 
 //Routes

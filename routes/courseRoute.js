@@ -10,7 +10,8 @@ router.route('/')
     .post(roleMiddleware(["teacher", "admin"]), courseController.createCourse);
 
 router.route('/:slug')
-    .get(courseController.getCourse);
+    .get(courseController.getCourse)
+    .delete(courseController.deleteCourse);
 
 router.route('/enroll')
     .post(courseController.enrollCourse);
