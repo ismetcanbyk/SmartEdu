@@ -20,7 +20,7 @@ const createUser = async (req, res) => {
         }
 
         res.status(400).redirect('/register');
-    }
+    };
 };
 
 

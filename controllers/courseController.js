@@ -63,7 +63,7 @@ const getAllCourses = async (req, res) => {
             status: "fail",
             error
         });
-    }
+    };
 };
 
 const getCourse = async (req, res) => {
@@ -82,7 +82,7 @@ const getCourse = async (req, res) => {
             status: "fail",
             error
         });
-    }
+    };
 };
 
 
@@ -98,7 +98,7 @@ const enrollCourse = async (req, res) => {
         res.status(400).json({
             error
         });
-    }
+    };
 };
 
 const releaseCourse = async (req, res) => {
@@ -112,7 +112,7 @@ const releaseCourse = async (req, res) => {
         res.status(400).json({
             error
         });
-    }
+    };
 };
 
 
