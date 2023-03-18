@@ -144,12 +144,7 @@
 																									class="btn btn-light btn-radius btn-brd grd1">
 																									Submit
 																								</button>
-																								<button type="submit"
-																									class="btn btn-light btn-radius btn-brd grd1"
-																									data-dismiss="modal"
-																									aria-hidden="true">
-																									Cancel
-																								</button>
+
 																							</div>
 																						</div>
 																					</form>
@@ -211,12 +206,90 @@
 								</div><!-- end row -->
 							</div><!-- end container -->
 						</div><!-- end section -->
-
-
-
-
 						<% } %>
 							<% } %>
+								<% if(user.role==='admin' ) { %>
+									<div class="all-title-box">
+										<div class="container text-center">
+											<h1>
+												<%= user.name %><span class="m_1">ADMIN</span>
+											</h1>
+										</div>
+									</div>
+									<div class="container mt-5 mb-5">
+										<h2>Users</h2>
+										<div class="row">
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">ID#</th>
+														<th scope="col">Name</th>
+														<th scope="col">Email</th>
+														<th scope="col">Role</th>
+														<th scope="col">Delete</th>
+													</tr>
+												</thead>
+												<tbody>
+													<% for (let i=0; i< users.length; i++) { %>
+														<tr>
+															<th scope="row">
+																<%=users[i]._id %>
+															</th>
+															<th>
+																<%=users[i].name %>
+															</th>
+															<td>
+																<%=users[i].email %>
+															</td>
+															<td>
+																<%=users[i].role %>
+															</td>
+															<td><a href="/users/<%= users[i]._id %>?_method=DELETE"
+																	onclick="return confirm('ARE YOU SURE')"
+																	class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a>
+															</td>
+														</tr>
+														<% } %>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="container mt-5 mb-5">
+										<h2>Categories</h2>
+										<div class="row">
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">ID#</th>
+														<th scope="col">Name</th>
+														<th scope="col">Add</th>
+														<th scope="col">Delete</th>
+													</tr>
+												</thead>
+												<tbody>
+													<% for (let i=0; i< categories.length; i++) { %>
+														<tr>
+															<th scope="row">
+																<%=categories[i]._id %>
+															</th>
+															<th>
+																<%=categories[i].name %>
+															</th>
+															<td>
+																<a href="/users/<%= users[i]._id %>?_method=DELETE"
+																	onclick="return confirm('ARE YOU SURE')"
+																	class="btn btn-success rounded-0 text-white"><span>ADD</span></a>
+															</td>
+															<td><a href="/categories/<%= categories[i]._id %>?_method=DELETE"
+																	onclick="return confirm('ARE YOU SURE')"
+																	class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a>
+															</td>
+														</tr>
+														<% } %>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<% } %>
 
-
-								<%- include('partials/_footer') %>
+										<%- include('partials/_footer') %>
