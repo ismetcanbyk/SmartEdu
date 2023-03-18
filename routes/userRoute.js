@@ -20,8 +20,6 @@ router.route('/signup')
                         }
                     })
                 }),
-
-
             body('password').not().isEmpty().withMessage('Please Enter A Password !')
         ],
         authController.createUser);

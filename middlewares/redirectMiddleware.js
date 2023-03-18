@@ -10,8 +10,6 @@ const redirectMidlleware = async (req, res, next) => {
         } else {
             next();
         }
-
-
     } catch (error) {
         console.log(error);
     }
