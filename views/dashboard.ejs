@@ -276,8 +276,7 @@
 																<%=categories[i].name %>
 															</th>
 															<td>
-																<a href="/users/<%= users[i]._id %>?_method=DELETE"
-																	onclick="return confirm('ARE YOU SURE')"
+																<a href="/categories"
 																	class="btn btn-success rounded-0 text-white"><span>ADD</span></a>
 															</td>
 															<td><a href="/categories/<%= categories[i]._id %>?_method=DELETE"
@@ -290,6 +289,7 @@
 											</table>
 										</div>
 									</div>
+
 									<% } %>
 
 										<%- include('partials/_footer') %>
